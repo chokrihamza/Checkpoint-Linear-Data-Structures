@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <script>
+   let a=[1,2,3,4,4];
+   let b=[1,2,3,4,5,6,4];
+   let sum=0;
+   
+  let x;
+   for(let i=0;i<a.length;i++){
+    for(let j=0;j<b.length;j++){
+     if(a[i]!=b[j]) {
+       x=true;
+     }else{
+       x=false;
+       break;
+       }
+       console.log(x);
+       }
+  if(x==true){
+    sum+=a[i]
+    console.log(sum);
+  }
+  
+}
+for(let i=0;i<b.length;i++){
+    for(let j=0;j<a.length;j++){
+     if(b[i]!=a[j]) {
+       x=true;
+     }else{
+       x=false;
+       break;
+       }
+       console.log(x);
+       }
+  if(x==true){
+    sum+=b[i];
+    console.log(sum);
+  }
+  
+}
+</script>
+</body>
+</html>

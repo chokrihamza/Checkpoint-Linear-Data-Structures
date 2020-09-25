@@ -1,0 +1,55 @@
+//find duplicate element in two arrays 
+ALGORITHM Probleme_two_find_sum_duplicates_elements
+VAR
+tableau1,tableau2 : ARRAY_OF INTEGER[];
+  i,j,sum:INTEGER:=0:
+  comparateur:BOOLEAN;
+  // code après remplissage de tableaux ****lire le deux tableaux***
+  //les elements de tableau sont distincts T[i]<>T[i+1]
+  //utliser deux tableaux directs
+  //ou bien remplissage avec boucle for 
+  //ou une autre méthode avec condition d'arret;
+
+BEGIN
+read(tableau1[]);
+read(tableau2[]);
+FOR i FROM 0 TO tableau1.length-1 STEP  1 DO
+ FOR j FROM 0 TO tableau2.length-1 STEP 1  DO
+  IF (tableau1[i]=tableau2[j]) THEN
+    sum+=2*tableau1[i];
+  END_IF
+  
+ END_FOR
+END_FOR
+
+//find duplicate elements in using hashtable
+ALGORITHM Probleme_two_find_sum_duplicates_elements
+VAR
+  Hashelement:HASH_TABLE <INTEGER,INTEGER>
+  tableau1,tableau2: ARRAY_OF INTEGER[];
+  i,j:INTEGER;
+  count:INTEGER:=1;
+  sum:INTEGER:=0;
+
+
+BEGIN
+ FOR i FROM 0 TO tableau1.length-1 STEP  1 DO
+ Hashelement.insert(tableau1[i],count);
+END_FOR
+FOR i FROM 0 TO tableau2.length-1 STEP  1 DO
+IF (Hashelement.lookup(tableau2[i])) THEN
+count:=Hashelement.get(tableau2[i]);
+Hashelement.insert(tableau2[i],count+1)
+ELSE
+  Hashelement.insert(tableau2[i],count);
+END_IF
+
+END_FOR
+FOR i FROM 0 TO Hashelement.size STEP  1 DO
+IF (Hashelement.get(i):=2) THEN
+  sum+=2*Hashelement.get(i);
+END_IF
+ 
+END_FOR
+write("la somme des elements disctincts est:  " + sum);
+END
